@@ -16,7 +16,6 @@ class MySider extends Component {
     }
   }
   btnSider(select,path){
-    console.log(path);
     this.props.history.push(path)
     this.setState({select : select})
   }

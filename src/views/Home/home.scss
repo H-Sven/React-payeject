@@ -19,6 +19,8 @@
     .ant-layout-content {
       display: flex;
       flex-direction: column;
+      padding: 60px;
+      padding-top: 20px;
       .content_main {
         flex: 1;
       }

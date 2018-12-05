@@ -7,20 +7,19 @@ import {Route, Switch} from 'react-router-dom';
 import App from './../App';
 import Home from '../views/Home/Home';
 import HomeIndex from '../views/Home/Index';
+import HomeOrder from '../views/Home/Order';
 import MyFooter from '../components/MyFooter';
-// import MovieInfo from './../views/movieInfo/MovieInfo';
-// import Photos from './../views/movieInfo/Photos';
  
 const Root = () => (
   <Switch>
-    <Route path="/"
+    <Route
       render={props => (
         <App>
           <Switch>
-          <Route path="/" component={Home} />
             <Route path="/home" render={props => (
               <Home>
                 <Route path="/home/index" component={HomeIndex} />
+                <Route path="/home/order" component={HomeOrder} />
               </Home>
             )} />
             <Route path="/order" component={MyFooter} />
