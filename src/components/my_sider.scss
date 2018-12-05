@@ -1,0 +1,21 @@
+.my_sider {
+  .sider_item {
+    width: 100%;
+    height: 130px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 18px;
+    user-select: none;
+    color: #888;
+    .iconfont {
+      font-size: 22px;
+    }
+  }
+  .sider_item.z-active {
+    background-color: #f6f9fd;
+    color: #0f94d6;
+  }
+}
