@@ -52,7 +52,7 @@ export default class Index extends Component {
     this.setState({
       company: value,
       companyDes:value === '1' ? 'CNY' : 'USD'
-    },()=>{
+    },() => {
       this.getIndexData()
     })
   }

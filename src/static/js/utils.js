@@ -1,4 +1,17 @@
+const api_url = `https://t-api.aipaybox.com/otc/w`;
+const www_api_url = 'https://t-api.aipaybox.com/w';
 export default {
+  // 下载报表函数
+  downloadCSV(url,params = {},version = 'v1'){
+    const baseUrl = `${api_url}/zh-cn/${version}${url}`
+    const finalUrl = `${baseUrl}?${this.encodeParams(params)}`
+    const link = document.createElement('a')
+    link.style.display = 'none'
+    link.href = finalUrl
+    link.setAttribute('download', '下载报表')
+    link.click()
+    document.body.appendChild(link)
+  },
   // 格林尼治时间字符串转时间字符串
   formatDateGL(myTimes){
     let d = new Date(myTimes);

@@ -1,5 +1,6 @@
 import { post, get } from "./http";
 import utils from './utils';
+import { message } from 'antd';
 export default {
   /**
    * 并行请求时，需要一个状态为resolve的函数
@@ -17,14 +18,13 @@ export default {
     return new Promise((resolve, reject) => {
       get('/common/coinTypes',{}).then(res=>{
         if (!res.code) {
-          res.map((v,index)=>{
+          res.map((v,index) => {
             coinArr.push({value:v.typeName,label:v.typeName,exgPrice:2,exgNum:v.showPrecision});
           })
           resolve(coinArr)
         }else {
           reject(res)
-          Message.destroy()
-          Message.warning(res.message);
+          message.warning(res.message);
         }
       })
     });
@@ -51,7 +51,7 @@ export default {
    * regType:类型  type:获取类型
    */
   PublicOldGetCode(regType,type){
-    let url = regType == 1  ? '/user/sendEmailCode' :'/user/sendEmailCode';
+    let url = regType === 1  ? '/user/sendEmailCode' :'/user/sendEmailCode';
     return new Promise((resolve,reject)=>{
       post(url,{
         codeType:type
@@ -69,7 +69,7 @@ export default {
    * regType:注册类型  type:获取类型
    */
   isLoginPublicGetCode(regType,type){
-    let url = regType == 1  ? '/common/sendSMSCode' :'/common/sendEmailCode';
+    let url = regType === 1  ? '/common/sendSMSCode' :'/common/sendEmailCode';
     return new Promise((resolve,reject)=>{
       post(url,{
         codeType:type
@@ -145,8 +145,8 @@ export default {
       post('/user/logout',{}).then(res=>{
         if (!res.code) {
           resolve(res)
-          store.commit('isLogin',false)
-          store.commit('setInfo',{})
+          // store.commit('isLogin',false)
+          // store.commit('setInfo',{})
           utils.deleteCookie();
         }else{
           reject(res)
