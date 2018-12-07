@@ -1,0 +1,28 @@
+.assets {
+  .assets_title {
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    .ant-breadcrumb {
+      cursor: pointer;
+      font-size: 18px;
+      color: #333;
+      .ant-breadcrumb-link:hover {
+        color: #0f94d6;
+      }
+      span:last-child {
+        .ant-breadcrumb-link {
+          color: #606266;
+        }
+      }
+      span:first-child {
+        .ant-breadcrumb-link {
+          color: #333;
+        }
+      }
+    }
+   
+  }
+}
