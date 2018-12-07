@@ -5,15 +5,9 @@ import { withRouter } from 'react-router-dom';
 class Assets extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    }
+    this.state = {}
   }
 
-  route(path){
-    console.log(path);
-    
-  }
   render() {
     return (
       <div className="assets">
