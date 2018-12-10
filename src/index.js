@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter} from 'react-router-dom';
-import Root from './router/Router';
+import { LocaleProvider } from 'antd';
+import App from './App';
+
+// 修改antd默认语言
+import zhCN from 'antd/lib/locale-provider/zh_CN';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
 
+
+moment.locale('zh-cn');
+
+
 ReactDOM.render(
-  <HashRouter>
-    <Root />
-  </HashRouter>,
+  <LocaleProvider locale={zhCN}>
+    <App></App>
+  </LocaleProvider>,
 document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();

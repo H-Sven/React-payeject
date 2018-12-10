@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import './assets.scss'
 import { Breadcrumb } from 'antd';
-import { withRouter } from 'react-router-dom';
+import { withRouter , Route, Switch } from 'react-router-dom';
+import AssetsIndex from "./AssetsIndex";
+import Record from "./Record";
 class Assets extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,10 @@ class Assets extends Component {
             {this.props.location.pathname.includes('home/assets/record') && <Breadcrumb.Item>提现</Breadcrumb.Item>}
           </Breadcrumb>
         </div>
-        {this.props.children}
+        <Switch>
+          <Route  path="/home/assets/index" component={AssetsIndex} />
+          <Route  path="/home/assets/record/:coin" component={Record} />
+        </Switch>
       </div>
     )
   }

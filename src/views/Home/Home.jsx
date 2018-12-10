@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import { Route, Switch, Redirect} from 'react-router-dom';
+import HomeIndex from './Index';
+import HomeOrder from './Order';
+import Assets from './Assets/Assets';
+
 import { Layout } from 'antd';
 import "./home.scss";
 import MyHeader from '../../components/MyHeader'
@@ -14,8 +19,9 @@ class Home extends Component {
     super(props);
     this.state = {}
   }
-  componentDidMount() {
-    
+  
+  componentWillMount() {
+    // this.props.history.push('/home/index')
   }
   
   render() {
@@ -27,7 +33,11 @@ class Home extends Component {
             <Sider><MySider></MySider></Sider>
             <Content>
               <div className="content_main">
-                {this.props.children}
+                <Switch>
+                  <Route  path="/home/index" component={HomeIndex} />
+                  <Route  path="/home/order" component={HomeOrder} />
+                  <Route  path="/home/assets" component={Assets} />
+                </Switch>
               </div>
               <Footer><MyFooter></MyFooter></Footer>
             </Content>
