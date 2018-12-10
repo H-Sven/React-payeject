@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import './assetsIndex.scss'
 import { get } from '../../../static/js/http';
 import {  Select , Button , Table  } from 'antd';
@@ -90,7 +91,7 @@ export default class AssetsIndex extends Component {
 
   // 提现
   withdrawal(coin){
-    this.props.history.push(`/home/assets/record/${coin}`)
+    this.props.history.push(`/home/assets/withdrawal/${coin}`)
   }
 
   handleChange(value,option) {
@@ -130,8 +131,8 @@ export default class AssetsIndex extends Component {
         </div>
         {/* 资产列表 */}
         <div className="btn_box">
-          <Button type="primary">提现记录</Button>
-          <Button type="danger">账单明细</Button>
+          <Button type="primary"><Link to="/home/assets/record">提现记录</Link></Button>
+          <Button type="danger"><Link to="/home/assets/details">账单明细</Link></Button>
         </div>
         <Table columns={this.state.columns} dataSource={this.state.data} rowKey='coin' pagination={false} />
       </div>

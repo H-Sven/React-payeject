@@ -57,7 +57,7 @@ export default class Order extends Component {
   getOrderList(pageNo = 1){
     get('/trade/transList',{
       pageNo:pageNo,
-      pageSize:20,
+      pageSize:10,
       tradeType:1,
       orderNo:this.state.ToolSelectArr.inputValue,
       coinType:this.state.ToolSelectArr.selectCoin === 0 ? '' : this.state.ToolSelectArr.selectCoin,
@@ -86,7 +86,7 @@ export default class Order extends Component {
         >
         </Tools>
         {/* 订单列表 */}
-        <Table columns={this.state.columns} dataSource={this.state.data} rowKey='adId' pagination={false} />
+        <Table columns={this.state.columns} dataSource={this.state.data} rowKey='orderNo' pagination={false} />
       </div>
     )
   }

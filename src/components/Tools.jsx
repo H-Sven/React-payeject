@@ -20,6 +20,13 @@ export default class Tools extends Component {
       selectCoin: '',
       statusArr: [],
       selectStatus: '',
+      paymentType:'0',
+      paymentArr:[
+        { value: 0, label: '全部' },
+        { value: '1', label: '银行卡' },
+        { value: '2', label: '支付宝' },
+        { value: '3', label: '微信' },
+      ]
     }
   }
   componentWillMount = () => {
@@ -51,6 +58,10 @@ export default class Tools extends Component {
   handleChangeStatus(value) {
     this.setState({ selectStatus: value })
   }
+  // 选择收款方式
+  handleChangepayMent(value){
+    this.setState({ paymentType: value })
+  }
   // 将搜索数据发送给父组件
   sendData() {
     this.props.getChildData({
@@ -58,7 +69,8 @@ export default class Tools extends Component {
       endDate:this.state.endDate,
       inputValue:this.state.inputValue,
       selectCoin:this.state.selectCoin,
-      selectStatus:this.state.selectStatus
+      selectStatus:this.state.selectStatus,
+      paymentType:this.state.paymentType
     })
   }
   // 下载报表
@@ -88,7 +100,7 @@ export default class Tools extends Component {
           onOk={this.onOkDate.bind(this)}
         />
         <Search
-          placeholder="订单编号"
+          placeholder={this.props.toolsType === 'record' ? '提现编号' : '订单编号'}
           onChange={this.inputValue.bind(this)}
           onSearch={this.sendData.bind(this)}
           style={{ width: 200 }}
@@ -107,6 +119,15 @@ export default class Tools extends Component {
             )
           })}
         </Select>
+        {this.props.toolsType === 'record' && 
+          <Select placeholder="收款方式" style={{ width: 120 }} onChange={this.handleChangepayMent.bind(this)}>
+          {this.state.paymentArr.map((item, index) => {
+            return (
+              <Option value={item.value} key={index}>{item.label}</Option>
+            )
+          })}
+        </Select>
+        }
         <Button type="primary" icon="search" onClick={this.sendData.bind(this)}>搜索</Button>
         {this.props.toolsType === 'order' && 
           <Button type="danger" icon="download" onClick={this.DownLoad.bind(this)}>下载报表</Button>

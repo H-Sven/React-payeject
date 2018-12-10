@@ -106,7 +106,30 @@ button,
 select,
 textarea {
   outline: none;
+  -webkit-appearance: none;
 }
+input:-webkit-autofill {
+  background-image: none;
+}
+input[type="radio"] {
+  vertical-align: text-bottom;
+}
+input[type="checkbox"] {
+  vertical-align: bottom;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{  
+  -webkit-appearance:textfield;
+}     
+input[type="number"]{ 
+  -moz-appearance:textfield;  
+}  
+input::placeholder, textarea::placeholder { 
+  font-size: 14px;
+} 
 textarea,
 input,
 select {
