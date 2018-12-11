@@ -1,5 +1,5 @@
 const api_url = `https://t-api.aipaybox.com/otc/w`;
-const www_api_url = 'https://t-api.aipaybox.com/w';
+// const www_api_url = 'https://t-api.aipaybox.com/w';
 export default {
   // 下载报表函数
   downloadCSV(url,params = {},version = 'v1'){
@@ -72,7 +72,7 @@ export default {
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         var r = (d + Math.random() * 16) % 16 | 0;
         d = Math.floor(d / 16);
-        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        return (c === 'x' ? r : ((r & 0x3) | 0x8)).toString(16);
     });
     return uuid;
   },
@@ -90,7 +90,7 @@ export default {
   },
   isPassword: function (num) {
     // 8到20位（字母，数字，特殊符号任意两种组合）
-    var reg = /^(?![a-zA-z]+$)(?!\d+$)(?![!"#$%&'()*+,-./:;<=>?^_`\{|}~@]+$)[a-zA-Z\d!"#$%&'()*+,-./:;<=>?^_`\{|}~@]{8,20}$/;
+    var reg = /^(?![a-zA-z]+$)(?!\d+$)(?![!"#$%&'()*+,-./:;<=>?^_`{|}~@]+$)[a-zA-Z\d!"#$%&'()*+,-./:;<=>?^_`{|}~@]{8,20}$/;
     // var reg = /^(?![a-zA-z]+$)(?!\d+$)(?![_#@.]+$)[a-zA-Z\d_#@.]{8,20}$/;
     return reg.test(num);
   },
@@ -108,23 +108,23 @@ export default {
     return reg.test(num);
   },
   // 倒计时
-  countdown(time) {
-    var timeDate = (time / 1000) * 100; //秒 x 100
-    var myDate = 0;
-    var timer = setInterval(function () {
-      timeDate--;
-      if (timeDate <= 0) {
-        clearInterval(timer);
-      } else {
-        var ss = Math.floor(timeDate / 100); //总秒数
-        var h = Math.floor(ss / 3600); //时
-        var m = Math.floor((ss / 60 % 60)); // 分
-        var s = Math.floor((ss % 60)); //秒
-        var ms = timeDate - Math.floor(timeDate / 100) * 100; //毫秒
-        myDate = h + ':' + m + ":" + s + ':' + ms;
-      }
-    }, 10);
-  },
+  // countdown(time) {
+  //   var timeDate = (time / 1000) * 100; //秒 x 100
+  //   var myDate = 0;
+  //   var timer = setInterval(function () {
+  //    timeDate--;
+  //     if (timeDate <= 0) {
+  //       clearInterval(timer);
+  //     } else {
+  //       var ss = Math.floor(timeDate / 100); //总秒数
+  //       var h = Math.floor(ss / 3600); //时
+  //       var m = Math.floor((ss / 60 % 60)); // 分
+  //       var s = Math.floor((ss % 60)); //秒
+  //       var ms = timeDate - Math.floor(timeDate / 100) * 100; //毫秒
+  //       myDate = h + ':' + m + ":" + s + ':' + ms;
+  //     }
+  //   }, 10);
+  // },
   // 毫秒转格式
   overTime(time) {
     var a = (time % 1000).toString().substr(0, 2);
@@ -169,14 +169,14 @@ export default {
       date.setTime(x * 1000);
       x = date;
     }
-    var z = {
-      y: x.getFullYear(),
-      M: x.getMonth() + 1,
-      d: x.getDate(),
-      h: x.getHours(),
-      m: x.getMinutes(),
-      s: x.getSeconds()
-    };
+    // var z = {
+    //   y: x.getFullYear(),
+    //   M: x.getMonth() + 1,
+    //   d: x.getDate(),
+    //   h: x.getHours(),
+    //   m: x.getMinutes(),
+    //   s: x.getSeconds()
+    // };
     return y.replace(/(y+|M+|d+|h+|m+|s+)/g, function (v) {
       return ((v.length > 1 ? "0" : "") + eval("z." + v.slice(-1))).slice(
         -(v.length > 2 ? v.length : 2)

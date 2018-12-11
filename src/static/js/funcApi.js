@@ -16,9 +16,9 @@ export default {
   getCoinArr(){
     const coinArr = [];
     return new Promise((resolve, reject) => {
-      get('/common/coinTypes',{}).then(res=>{
+      get('/common/coinTypes',{}).then(res => {
         if (!res.code) {
-          res.map((v,index) => {
+          res.map(v => {
             coinArr.push({value:v.typeName,label:v.typeName,exgPrice:2,exgNum:v.showPrecision});
           })
           resolve(coinArr)

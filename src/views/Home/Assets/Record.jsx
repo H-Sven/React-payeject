@@ -43,8 +43,10 @@ export default class Record extends Component {
         {title: '订单状态',dataIndex: 'statusDesc',key: 'statusDesc'},
         {title: '操作',dataIndex: 'status',key: 'status',
           render: (status,item) => (
-            <span>{status === '2' && <span>确认放币</span>}</span>,
-            <span><Link to={`/home/assets/recordDetails/${item.orderId}`}>详情</Link></span>
+            <span>
+              <span>{status === '2' && <span>确认放币</span>}</span>,
+              <span><Link to={`/home/assets/recordDetails/${item.orderId}`}>详情</Link></span>
+            </span>
           )
         },
       ],
@@ -54,6 +56,7 @@ export default class Record extends Component {
   }
   componentWillMount = () => {
     this.getTransList()
+    
   }
   
   // 搜索条件
