@@ -9,8 +9,6 @@ import moment from 'moment';
 import 'moment/locale/zh-cn';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
-
-
 moment.locale('zh-cn');
 
 
