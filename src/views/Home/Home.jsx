@@ -34,7 +34,7 @@ class Home extends Component {
             <Content>
               <div className="content_main">
                 <Switch>
-                  <Redirect to="/home/index" from="/home" exact />
+                  <Redirect exact to="/home/index" from="/home" />
                   <Route  path="/home/index" component={HomeIndex} />
                   <Route  path="/home/order" component={HomeOrder} />
                   <Route  path="/home/assets" component={Assets} />
