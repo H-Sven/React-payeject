@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
-function mapStateProps(state) {
+const mapStateToProps = state => {//需要redux中的哪些全局状态
   return {
-    isLogin:state.allRedux.isLogin,
     name:state.allRedux.name,
   }
 }
-function mapDispatchProps(dispatch) {
+const mapDispatchToProps = dispatch => {//需要redux中的那些action创建函数
   return {
-    goLogin(data){
+    goLogin(data){ //申明一个调用方法传入action,传入对应的type
       dispatch({type:'GO_LOGIN',data})
     },
     outLogin(data){
@@ -37,4 +36,4 @@ function mapDispatchProps(dispatch) {
     )
   }
 }
-export default connect(mapStateProps,mapDispatchProps)(Details);
+export default connect(mapStateToProps,mapDispatchToProps)(Details);
